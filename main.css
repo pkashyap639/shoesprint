@@ -4,13 +4,27 @@ body{
 
 /* Main Heading */
 .main-heading{
-    font-size: 8rem;
+    font-size: 9.5rem;
     font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Display Image */
 .card-text{
     font-weight: bold;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Jumbotron */
+.jumbotron-text{
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+    font-size: 20rem;
+    margin: 0;
+}
+
+.main-jumbotron{
+    background-color: black;
 }
