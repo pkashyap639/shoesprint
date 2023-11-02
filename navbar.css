@@ -1,6 +1,8 @@
 .navbar-brand{
     color: black;
     font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
 }
 
 .nav-link{
