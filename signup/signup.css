@@ -1,8 +1,15 @@
-html,
+html
 body {
   height: 100% !important;
+  background-color: #f9f9f9;
 }
 
+/* Container */
+main {
+    background-color: white;
+    border-radius: 2%;
+}
+/* form */
 .form-signin {
   max-width: 330px;
   padding: 1rem;
@@ -22,4 +29,26 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.signup-btn {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.signup-btn:hover {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.form-heading {
+    font-weight: bold !important;
+    font-size: 1.5rem;
 }
