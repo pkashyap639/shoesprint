@@ -1,10 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Nunito', sans-serif;
+    overflow-x: hidden; /*remove horizontal scrool*/
 }
 
 /* Main Heading */
 .main-heading{
-    font-size: 9.5rem;
+    font-size: 7.5rem;
     font-weight: bold;
     font-family: 'Bebas Neue', sans-serif;
 }
@@ -21,7 +28,7 @@ body{
 .jumbotron-text{
     font-family: 'Bebas Neue', sans-serif;
     color: white;
-    font-size: 20rem;
+    font-size: 15rem;   
     margin: 0;
 }
 
@@ -47,4 +54,51 @@ body{
 .community-input{
     border: 2px solid black;
     padding: 10px 10px;
+}
+
+
+
+/* Media Queries for Responsive Design */
+/* tablets and smaller screens */
+@media (max-width: 768px) {
+    
+    .main-heading {
+        font-size: 5rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .jumbotron-text {
+        font-size: 10rem;
+    }
+}
+
+ /*  mobile devices */
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 2rem;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 1rem; /* Add space below each card */
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+    }
+
+   
+
+    .jumbotron-text {
+        font-size: 4rem;
+        margin-top: 0%;
+
+    }
+    .col-md-3 {
+        width: 50%; /* Set each card to take 50% of the container width */
+    }
+    
 }
