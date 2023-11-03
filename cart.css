@@ -1,0 +1,91 @@
+/* product detail list */
+#product-overview {
+    margin: 50px auto;
+    border: 2px solid black;
+    padding: 5px 15px;
+    width: 90%;
+}
+
+/* each product row */
+.products {
+    width: 100%;
+    margin: 10px auto;
+}
+
+/* product image holder */
+.product-image {
+    padding: auto;
+}
+
+/* product image */
+.product-img {
+    height: 100px;
+    margin: auto;
+}
+
+/* product descriptions */
+.product-name {
+    padding: 0;
+    margin: 0;
+}
+
+.product-price {
+    padding: 0;
+    margin: 0;
+}
+
+#product-qnt {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 3px;
+}
+
+
+
+
+/* cart price calculation */
+#price-cal {
+    margin: 50px auto;
+    border: 2px solid black;
+    padding: 15px 15px;
+    width: 90%;
+}
+
+#ctcBtn {
+    border-radius: 50px;
+}
+
+#recipt {
+    width: 95%;
+    margin: auto;
+}
+
+
+
+@media only screen and (min-width: 426px) and (max-width: 1023px) {
+    #product-overview {
+        margin-left: 15px;
+        margin: 5px;
+    }
+
+    #price-cal {
+        margin: 5px;
+
+    }
+
+    #product-qnt {
+        padding: 0px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #product-overview {
+        margin-left: 15px;
+        margin: 5px;
+    }
+
+    #price-cal {
+        margin: 5px;
+
+    }
+}
