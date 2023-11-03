@@ -1,0 +1,83 @@
+html,
+body {
+  height: 100% !important;
+  background-color: #f9f9f9;
+}
+
+/* Container */
+main {
+    background-color: white;
+    border-radius: 2%;
+}
+/* form */
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+
+}
+
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #e3e6ea;
+}
+
+
+.signup-btn {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.signup-btn:hover {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.form-heading {
+    font-weight: bold !important;
+    font-size: 1.5rem;
+}
+
+.form-logo-link {
+    text-decoration: none;
+    color: black;
+}
+
+.form-logo {
+    color: black;
+    font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+}
+
+.signin-link{
+    color: gray;
+    font-size: .8rem !important;
+}
+
+.signin-redirect{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: .8rem !important;
+}
