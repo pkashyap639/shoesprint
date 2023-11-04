@@ -31,6 +31,57 @@ checkFormValidation = (username,useremail,userpassword,userphone) =>{
     return true
 }
 
+
+databaseEntry = (username,useremail,userpassword,userphone) =>{
+    // creating database
+    const myDb = indexedDB.open("CustomerDB");
+
+    // on error
+    myDb.onerror = (error) =>{
+        console.error(error)
+    }
+
+    myDb.onupgradeneeded = () =>{
+        // getting cursor
+        const cur = myDb.result
+        const obj = cur.createObjectStore("customer",{keyPath: 'email'})
+        // columns
+        obj.createIndex("customer_info",["user"],{unique: true});
+    }
+
+    myDb.onsuccess = ()=>{
+        const cur = myDb.result
+        const trans = cur.transaction("customer","readwrite")
+        const ins = trans.objectStore("customer")
+        const userIndex = ins.index("customer_info")
+        ins.put({
+            email: useremail,
+            password: userpassword,
+            name: username,
+            phone: userphone,
+            cart: {
+                cardId: 'cart'+useremail,
+                cartItems: 
+                    []
+            },
+            totalPrice: 0
+        })
+
+        // const query = ins.get('user1@mail.com')
+        // query.onsuccess =() =>{
+        //     console.log("data: ",query.result);
+        // }
+        trans.oncomplete =() =>{
+            cur.close();
+        }
+
+    }
+}
+
+
+// {pId: 1,pname:'product 1', category: 'A', qty: 1, price: 5},
+// {pId: 2,pname:'product 2', category: 'B', qty: 2, price: 20},
+// {pId: 3,pname:'product 3', category: 'A', qty: 1, price: 7}
 getUserData = (event) =>{
     event.preventDefault()
     console.log("Get User Data");
@@ -42,6 +93,7 @@ getUserData = (event) =>{
     if (checkFormValidation(name,email,password,phone)){
         console.log("Valid Form");
         document.getElementById('redirect-msg').innerHTML = "Account Created, redirecting to Sign In"
+        databaseEntry(name,email,password,phone)
         setTimeout(() => {
             window.location.href = '../signin/signin.html';
         }, 3000);
