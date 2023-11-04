@@ -87,3 +87,7 @@ main {
   color: red;
   font-size: 0.7rem;
 }
+
+#redirect-msg{
+  color: green;
+}
