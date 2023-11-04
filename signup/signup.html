@@ -17,28 +17,34 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="./signup.css">
+    <!-- script -->
+    <script src="./signup.js" defer></script>
 </head>
 <body class="d-flex align-items-center py-4 ">
     <!-- Signup Form -->
     <main class="form-signin w-100 m-auto">
         <p class="form-logo text-center"><a class="form-logo-link" href="../index.html">SHOESPRINT</a></p>
-        <form>
+        <form id="signUpForm">
           <h1 class="h3 mb-3 fw-normal text-center form-heading">Please Sign Up</h1>
 
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Enter Your Full Name" id="" >
+            <input type="text" class="form-control" name="username" placeholder="Enter Your Full Name" id="username" >
+            <span class="formError" id="userNameError"></span>
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Enter Your Email" id="" >
+            <input type="email" class="form-control" name="email" placeholder="Enter Your Email" id="email" >
+            <span class="formError" id="userEmailError"></span>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Create A Password" id="">
+            <input type="password" class="form-control" name="password" placeholder="Create A Password" id="password">
+            <span class="formError" id="userPasswordError"></span>
           </div>
           <div class="mb-3">
-            <input type="phone" class="form-control" placeholder="Enter Your Phone Number" id="">
+            <input type="phone" class="form-control" name="phone" placeholder="Enter Your Phone Number" id="phone">
+            <span class="formError" id="userPhoneError"></span>
           </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" class="btn signup-btn">Sign Up</button>
+            <button type="submit" class="btn signup-btn" onclick="getUserData(event)">Sign Up</button>
           </div> 
         </form>
         <p class="signin-link text-center pt-2">Already a user? <a class="signin-redirect" href="../signin/signin.html">Sign In</a></p>
