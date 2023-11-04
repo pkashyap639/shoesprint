@@ -41,6 +41,11 @@ getUserData = (event) =>{
     const phone = form.elements.phone.value
     if (checkFormValidation(name,email,password,phone)){
         console.log("Valid Form");
+        document.getElementById('redirect-msg').innerHTML = "Account Created, redirecting to Sign In"
+        setTimeout(() => {
+            window.location.href = '../signin/signin.html';
+        }, 3000);
+        
     }else{
         console.log("Invalid Form");
     }
