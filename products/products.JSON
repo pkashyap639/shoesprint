@@ -1,0 +1,100 @@
+{
+    "products": [
+        {
+            "productId": 101,
+            "productName": "Opulent Elegance",
+            "category": "Opulent",
+            "price": 81
+        },
+        {
+            "productId": 102,
+            "productName": "Regal Opulence",
+            "category": "Opulent",
+            "price": 95
+        },
+        {
+            "productId": 103,
+            "productName": "Luxe Ambiance",
+            "category": "Opulent",
+            "price": 124
+        },
+        {
+            "productId": 104,
+            "productName": "Supreme Opal",
+            "category": "Opulent",
+            "price": 73
+        },
+        {
+            "productId": 105,
+            "productName": "Luxetique Elysium",
+            "category": "Luxet",
+            "price": 83
+        },
+        {
+            "productId": 106,
+            "productName": "Royal Essence",
+            "category": "Luxet",
+            "price": 98
+        },
+        {
+            "productId": 107,
+            "productName": "Majestic Velvet",
+            "category": "Luxet",
+            "price": 64
+        },
+        {
+            "productId": 108,
+            "productName": "Plush Luxuria",
+            "category": "Luxet",
+            "price": 102
+        },
+        {
+            "productId": 109,
+            "productName": "Sapphire Serenade",
+            "category": "Sapphire",
+            "price": 86
+        },
+        {
+            "productId": 110,
+            "productName": "Azure Jewel",
+            "category": "Sapphire",
+            "price": 85
+        },
+        {
+            "productId": 111,
+            "productName": "Crystal Elegance",
+            "category": "Sapphire",
+            "price": 95
+        },
+        {
+            "productId": 112,
+            "productName": "Gemstone Charm",
+            "category": "Sapphire",
+            "price": 76
+        },
+        {
+            "productId": 113,
+            "productName": "Dazzling Radiance",
+            "category": "Dazzle",
+            "price": 97
+        },
+        {
+            "productId": 114,
+            "productName": "Sparkling Allure",
+            "category": "Dazzle",
+            "price": 86
+        },
+        {
+            "productId": 115,
+            "productName": "Gemfire Splendor",
+            "category": "Dazzle",
+            "price": 97
+        },
+        {
+            "productId": 116,
+            "productName": "Twinkling Mystique",
+            "category": "Dazzle",
+            "price": 78
+        }
+    ]
+}
