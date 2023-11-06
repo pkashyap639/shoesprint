@@ -1,3 +1,8 @@
+if(localStorage.getItem('token')!='whisky'){
+    window.location.href = "./index.html"
+}
+else{
+
 window.onload = updateProdDesc();
 window.addEventListener("resize", updateProdDesc);
 
@@ -37,4 +42,5 @@ function updateProdDesc() {
         price_cal.classList.add('col');
         product_overview.classList.add('col');
     }
+}
 }
