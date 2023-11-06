@@ -89,6 +89,7 @@ userSignIn =(event)=>{
     const password = form.elements.password.value
     validateSignIn(email,password)
     makeSignIn(email,password)
+    window.location.href = "../cart.html"
     checkToken()
 
 }
