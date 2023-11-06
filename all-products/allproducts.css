@@ -1,0 +1,20 @@
+.card-text{
+    font-family: 'Nunito', sans-serif !important;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.product-category{
+    font-size: .8rem;
+    color: gray;
+}
+
+.add-btn, .view-btn{
+    background-color: black;
+    color: white;
+}
+
+.add-btn:hover, .view-btn:hover{
+    background-color: black;
+    color: white;
+}
