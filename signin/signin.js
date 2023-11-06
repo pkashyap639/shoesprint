@@ -19,7 +19,22 @@ validateSignIn = (useremail,userpassword) =>{
 }
 
 
+// Token Generation
+generateToken = ()=>{
+    const token = "whisky"
+    localStorage.setItem('token',token)
+}
+
+// Check if token Exists
+checkToken = () =>{
+    if(localStorage.getItem('token')='whisky'){
+        return true
+    }
+    return false
+}
+
 makeSignIn =(email,password)=>{
+    let flag = 1
     // creating database
     const myDb = indexedDB.open("CustomerDB");
 
@@ -38,7 +53,7 @@ makeSignIn =(email,password)=>{
         emailQuery.onsuccess =() =>{
             if(emailQuery.result == undefined){
                 document.getElementById('userEmailError').innerHTML = "Email Not Exist"
-                return -1
+                flag = -1
             }else{
                 console.log("data: ",emailQuery.result);
                 document.getElementById('userEmailError').innerHTML = ""
@@ -47,8 +62,7 @@ makeSignIn =(email,password)=>{
                     console.log('Password Match');
                 }else{
                     document.getElementById('userPasswordError').innerHTML = "Invalid Password"
-                    return -2
-
+                    flag = -1
                 }
             }
         }
@@ -56,9 +70,15 @@ makeSignIn =(email,password)=>{
 
         trans.oncomplete =() =>{
             cur.close();
+
+            if(flag == -1){
+                return false
+            }
+             generateToken()  
         }
 
     } 
+    
 }
 
 userSignIn =(event)=>{
@@ -69,5 +89,6 @@ userSignIn =(event)=>{
     const password = form.elements.password.value
     validateSignIn(email,password)
     makeSignIn(email,password)
+    checkToken()
 
 }
