@@ -27,7 +27,7 @@ generateToken = ()=>{
 
 // Check if token Exists
 checkToken = () =>{
-    if(localStorage.getItem('token')='whisky'){
+    if(localStorage.getItem('token')=='whisky'){
         return true
     }
     return false
