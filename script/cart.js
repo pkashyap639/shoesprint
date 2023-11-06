@@ -1,3 +1,8 @@
+signOut = ()=>{
+    localStorage.removeItem('token')
+    window.location.href = "./index.html"
+}
+
 if(localStorage.getItem('token')!='whisky'){
     window.location.href = "./index.html"
 }
