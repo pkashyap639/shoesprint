@@ -81,3 +81,9 @@ main {
     font-weight: bold;
     font-size: .8rem !important;
 }
+
+/* Validation Error */
+.formError{
+  color: red;
+  font-size: 0.7rem;
+}
