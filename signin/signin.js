@@ -33,63 +33,71 @@ checkToken = () =>{
     return false
 }
 
-makeSignIn =(email,password)=>{
-    let flag = 1
-    // creating database
-    const myDb = indexedDB.open("CustomerDB");
+makeSignIn = async (email, password) => {
+    let flag = 1;
 
-    // on error
-    myDb.onerror = (error) =>{
-        console.error(error)
-    }  
-    myDb.onsuccess = ()=>{
-        const cur = myDb.result
-        const trans = cur.transaction("customer","readwrite")
-        const ins = trans.objectStore("customer")
-        const userIndex = ins.index("customer_info")
+    const openDatabase = () => {
+        return new Promise((resolve, reject) => {
+            const myDb = indexedDB.open("CustomerDB");
 
-        const emailQuery = ins.get(email)
-        // If email exists
-        emailQuery.onsuccess =() =>{
-            if(emailQuery.result == undefined){
-                document.getElementById('userEmailError').innerHTML = "Email Not Exist"
-                flag = -1
-            }else{
-                console.log("data: ",emailQuery.result);
-                document.getElementById('userEmailError').innerHTML = ""
-                if(password == emailQuery.result.password){
-                    document.getElementById('userPasswordError').innerHTML = ""
+            myDb.onerror = (error) => {
+                reject("Error opening database");
+            };
+
+            myDb.onsuccess = (event) => {
+                const db = event.target.result;
+                resolve(db);
+            };
+        });
+    };
+
+    try {
+        const db = await openDatabase();
+        const transaction = db.transaction("customer", "readwrite");
+        const store = transaction.objectStore("customer");
+        const userIndex = store.index("customer_info");
+
+        const emailQuery = store.get(email);
+
+        emailQuery.onsuccess = () => {
+            if (emailQuery.result == undefined) {
+                document.getElementById('userEmailError').innerHTML = "Email Not Exist";
+                flag = -1;
+            } else {
+                console.log("data: ", emailQuery.result);
+                document.getElementById('userEmailError').innerHTML = "";
+                if (password == emailQuery.result.password) {
+                    document.getElementById('userPasswordError').innerHTML = "";
                     console.log('Password Match');
-                }else{
-                    document.getElementById('userPasswordError').innerHTML = "Invalid Password"
-                    flag = -1
+                } else {
+                    document.getElementById('userPasswordError').innerHTML = "Invalid Password";
+                    flag = -1;
                 }
             }
-        }
+        };
 
-
-        trans.oncomplete =() =>{
-            cur.close();
-
-            if(flag == -1){
-                return false
+        transaction.oncomplete = () => {
+            db.close();
+            if (flag == -1) {
+                return false;
             }
-             generateToken()  
-        }
+            generateToken();
+            // Consider handling the redirection here or use a callback
+        };
+    } catch (error) {
+        console.error(error);
+    }
+};
 
-    } 
-    
-}
-
-userSignIn =(event)=>{
-    event.preventDefault()
+userSignIn = async (event) => {
+    event.preventDefault();
     console.log("Get User Data");
-    const form = document.getElementById('signInForm')
-    const email = form.elements.email.value
-    const password = form.elements.password.value
-    validateSignIn(email,password)
-    makeSignIn(email,password)
-    window.location.href = "../cart.html"
-    checkToken()
-
-}
+    const form = document.getElementById('signInForm');
+    const email = form.elements.email.value;
+    const password = form.elements.password.value;
+    validateSignIn(email, password);
+    await makeSignIn(email, password);
+    // Move the redirection logic inside the asynchronous code
+    window.location.href = "../cart.html";
+    checkToken();
+};
