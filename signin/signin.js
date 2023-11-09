@@ -20,9 +20,10 @@ validateSignIn = (useremail,userpassword) =>{
 
 
 // Token Generation
-generateToken = ()=>{
+generateToken = (email)=>{
     const token = "whisky"
     localStorage.setItem('token',token)
+    localStorage.setItem('email',email)
 }
 
 // Check if token Exists
@@ -81,7 +82,7 @@ makeSignIn = async (email, password) => {
             if (flag == -1) {
                 return false;
             }
-            generateToken();
+            generateToken(email);
             // Consider handling the redirection here or use a callback
         };
     } catch (error) {
