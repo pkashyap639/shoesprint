@@ -101,3 +101,13 @@ userSignIn = async (event) => {
     window.location.href = "../cart.html";
     checkToken();
 };
+
+
+ifLoginned = ()=>{
+    if(checkToken() == true){
+        window.location.href = "../cart.html"
+
+    }
+}
+
+ifLoginned()
