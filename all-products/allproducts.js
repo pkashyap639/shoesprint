@@ -22,7 +22,7 @@ gettingProductsData = () =>{
                                 <p class="card-text product-name">${element.productName}</p>
                                 <p class="card-text product-category">${element.category}</p>
                                 <div class="btn-group d-flex justify-content-center mt-4" role="group" >
-                                <button type="button" class="btn add-btn" id="${element.productId}">Add</button>
+                                <button type="button" class="btn add-btn" onClick="addProduct(${element.productId})" id="${element.productId}">Add</button>
                                 <button type="button" class="btn view-btn" id="${element.productId}">View</button>
                             </div>
                         </div>
@@ -37,3 +37,18 @@ gettingProductsData = () =>{
 }
 
 gettingProductsData()
+
+checkAuthentication = () =>{
+    if(localStorage.getItem('token')=='whisky'){
+        return true
+    }
+    return false
+}
+addProduct = (productId) =>{
+    if(checkAuthentication() == true){
+        console.log(productId);
+    }
+    else{
+        alert("Please Sign In First")
+    }
+}
