@@ -103,3 +103,20 @@ getUserData = (event) =>{
     }
 }
 
+
+checkToken = () =>{
+    if(localStorage.getItem('token')=='whisky'){
+        return true
+    }
+    return false
+}
+
+
+ifLoginned = ()=>{
+    if(checkToken() == true){
+        window.location.href = "../cart.html"
+
+    }
+}
+
+ifLoginned()
