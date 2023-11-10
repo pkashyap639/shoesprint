@@ -91,12 +91,28 @@ getUserData = (event) =>{
     const password = form.elements.password.value
     const phone = form.elements.phone.value
     if (checkFormValidation(name,email,password,phone)){
-        console.log("Valid Form");
-        document.getElementById('redirect-msg').innerHTML = "Account Created, redirecting to Sign In"
-        databaseEntry(name,email,password,phone)
-        setTimeout(() => {
-            window.location.href = '../signin/signin.html';
-        }, 3000);
+        const myDb = indexedDB.open("CustomerDB");
+        myDb.onsuccess = () =>{
+            const cur = myDb.result
+            const trans = cur.transaction("customer","readwrite")
+            const ins = trans.objectStore("customer")
+            const query = ins.get(email)
+            
+            query.onsuccess =() =>{
+                console.log('onSuccess:    ' + query.result)
+                if (query.result == undefined){
+                    console.log("Valid Form");
+                    document.getElementById('redirect-msg').innerHTML = "Account Created, redirecting to Sign In"
+                    databaseEntry(name,email,password,phone)
+                    setTimeout(() => {
+                        window.location.href = '../signin/signin.html';
+                    }, 3000);
+                }
+                else{
+                    document.getElementById('redirect-msg').innerHTML = "Account is already exists"
+                }
+            }
+        }
         
     }else{
         console.log("Invalid Form");
