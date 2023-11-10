@@ -1,3 +1,5 @@
+var allPorducts = null
+
 gettingProductsData = () =>{
     const rowItems = document.getElementById('products-row')
     const productsJson = '../products/products.JSON'
@@ -9,6 +11,7 @@ gettingProductsData = () =>{
         return response.json(); 
     })
     .then((data) => {
+        allPorducts = data.products
         let arr = data.products
         arr.forEach(element => {
             rowItems.innerHTML += `
@@ -70,9 +73,61 @@ authorizationBtn = () =>{
 }
 authorizationBtn()
 
-addProduct = (productId) =>{
+addProduct = async (productId) =>{
+    let prodResult;
     if(checkAuthentication() == true){
-        console.log(productId);
+        allPorducts.forEach(elm=>{
+            if(elm.productId == productId){
+                console.log(elm);
+                prodResult = elm
+            }
+        })
+        //
+        
+            let flag = 1;
+        
+            const openDatabase = () => {
+                return new Promise((resolve, reject) => {
+                    const myDb = indexedDB.open("CustomerDB");
+        
+                    myDb.onerror = (error) => {
+                        reject("Error opening database");
+                    };
+        
+                    myDb.onsuccess = (event) => {
+                        const db = event.target.result;
+                        resolve(db);
+                    };
+                });
+            };
+        
+            try {
+                const db = await openDatabase();
+                const transaction = db.transaction("customer", "readwrite");
+                const store = transaction.objectStore("customer");
+                const userIndex = store.index("customer_info");
+        
+                const cartQuery = store.get(localStorage.getItem('email'));
+        
+                cartQuery.onsuccess = () => {
+                    cartQuery.result.cart.cartItems.push(prodResult)
+                    cartQuery.result.totalPrice+=prodResult.price
+                    store.put(cartQuery.result)
+                    console.log("Cart Updated");
+                };
+        
+                transaction.oncomplete = () => {
+                    db.close();
+                    if (flag == -1) {
+                        return false;
+                    }
+                    
+                };
+            } catch (error) {
+                console.error(error);
+            }
+        
+        
     }
     else{
         alert("Please Sign In First")
