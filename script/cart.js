@@ -49,3 +49,52 @@ function updateProdDesc() {
     }
 }
 }
+
+getCartItems = async () =>{
+
+    let flag = 1;
+
+    const openDatabase = () => {
+        return new Promise((resolve, reject) => {
+            const myDb = indexedDB.open("CustomerDB");
+
+            myDb.onerror = (error) => {
+                reject("Error opening database");
+            };
+
+            myDb.onsuccess = (event) => {
+                const db = event.target.result;
+                resolve(db);
+            };
+        });
+    };
+
+    try {
+        const db = await openDatabase();
+        const transaction = db.transaction("customer", "readwrite");
+        const store = transaction.objectStore("customer");
+        const userIndex = store.index("customer_info");
+
+        const cartQuery = store.get(localStorage.getItem('email'));
+
+        cartQuery.onsuccess = () => {
+            let cartItems =  cartQuery.result.cart.cartItems
+            localStorage.setItem('mycart',JSON.stringify(cartItems))
+        };
+
+        transaction.oncomplete = () => {
+            db.close();
+            if (flag == -1) {
+                return false;
+            }
+            
+        };
+    } catch (error) {
+        console.error(error);
+    }
+    
+}
+
+getCartItems()
+let myCartItems = localStorage.getItem('mycart')
+console.log(JSON.parse(myCartItems));
