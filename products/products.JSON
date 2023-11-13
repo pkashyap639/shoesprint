@@ -5,112 +5,112 @@
             "productName": "Opulent Elegance",
             "category": "Opulent",
             "price": 81,
-            "imageUrl": "../images/resize/shoeOne"
+            "imageUrl": "../shoesImages/1.png"
         },
         {
             "productId": 102,
             "productName": "Regal Opulence",
             "category": "Opulent",
             "price": 95,
-            "imageUrl": "../images/resize/shoeTwo"
+            "imageUrl": "../shoesImages/2.png"
         },
         {
             "productId": 103,
             "productName": "Luxe Ambiance",
             "category": "Opulent",
             "price": 124,
-            "imageUrl": "../images/resize/shoeThree"
+            "imageUrl": "../shoesImages/3.png"
         },
         {
             "productId": 104,
             "productName": "Supreme Opal",
             "category": "Opulent",
             "price": 73,
-            "imageUrl": "../images/resize/shoeFour"
+            "imageUrl": "../shoesImages/4.png"
         },
         {
             "productId": 105,
             "productName": "Luxetique Elysium",
             "category": "Luxet",
             "price": 83,
-            "imageUrl": "../images/resize/shoeFive"
+            "imageUrl": "../shoesImages/5.png"
         },
         {
             "productId": 106,
             "productName": "Royal Essence",
             "category": "Luxet",
             "price": 98,
-            "imageUrl": "../images/resize/shoeSix"
+            "imageUrl": "../shoesImages/6.png"
         },
         {
             "productId": 107,
             "productName": "Majestic Velvet",
             "category": "Luxet",
             "price": 64,
-            "imageUrl": "../images/resize/shoeSeven"
+            "imageUrl": "../shoesImages/7.png"
         },
         {
             "productId": 108,
             "productName": "Plush Luxuria",
             "category": "Luxet",
             "price": 102,
-            "imageUrl": "../images/resize/shoeEight"
+            "imageUrl": "../shoesImages/8.png"
         },
         {
             "productId": 109,
             "productName": "Sapphire Serenade",
             "category": "Sapphire",
             "price": 86,
-            "imageUrl": "../images/resize/shoeNine"
+            "imageUrl": "../shoesImages/9.png"
         },
         {
             "productId": 110,
             "productName": "Azure Jewel",
             "category": "Sapphire",
             "price": 85,
-            "imageUrl": "../images/resize/shoeTen"
+            "imageUrl": "../shoesImages/10.png"
         },
         {
             "productId": 111,
             "productName": "Crystal Elegance",
             "category": "Sapphire",
             "price": 95,
-            "imageUrl": "../images/resize/shoeEleven"
+            "imageUrl": "../shoesImages/11.png"
         },
         {
             "productId": 112,
             "productName": "Gemstone Charm",
             "category": "Sapphire",
             "price": 76,
-            "imageUrl": "../images/resize/shoeTwelve"
+            "imageUrl": "../shoesImages/12.png"
         },
         {
             "productId": 113,
             "productName": "Dazzling Radiance",
             "category": "Dazzle",
             "price": 97,
-            "imageUrl": "../images/resize/shoeThirteen"
+            "imageUrl": "../shoesImages/13.png"
         },
         {
             "productId": 114,
             "productName": "Sparkling Allure",
             "category": "Dazzle",
             "price": 86,
-            "imageUrl": "../images/resize/shoeFouteen"
+            "imageUrl": "../shoesImages/14.png"
         },
         {
             "productId": 115,
             "productName": "Gemfire Splendor",
             "category": "Dazzle",
             "price": 97,
-            "imageUrl": "../images/resize/shoeFifteen"
+            "imageUrl": "../shoesImages/15.png"
         },
         {
             "productId": 116,
             "productName": "Twinkling Mystique",
             "category": "Dazzle",
             "price": 78,
-            "imageUrl": "../images/resize/shoeSixteen"
+            "imageUrl": "../shoesImages/16.png"
         }
     ]
 }
