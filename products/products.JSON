@@ -4,97 +4,113 @@
             "productId": 101,
             "productName": "Opulent Elegance",
             "category": "Opulent",
-            "price": 81
+            "price": 81,
+            "imageUrl": "../images/resize/shoeOne"
         },
         {
             "productId": 102,
             "productName": "Regal Opulence",
             "category": "Opulent",
-            "price": 95
+            "price": 95,
+            "imageUrl": "../images/resize/shoeTwo"
         },
         {
             "productId": 103,
             "productName": "Luxe Ambiance",
             "category": "Opulent",
-            "price": 124
+            "price": 124,
+            "imageUrl": "../images/resize/shoeThree"
         },
         {
             "productId": 104,
             "productName": "Supreme Opal",
             "category": "Opulent",
-            "price": 73
+            "price": 73,
+            "imageUrl": "../images/resize/shoeFour"
         },
         {
             "productId": 105,
             "productName": "Luxetique Elysium",
             "category": "Luxet",
-            "price": 83
+            "price": 83,
+            "imageUrl": "../images/resize/shoeFive"
         },
         {
             "productId": 106,
             "productName": "Royal Essence",
             "category": "Luxet",
-            "price": 98
+            "price": 98,
+            "imageUrl": "../images/resize/shoeSix"
         },
         {
             "productId": 107,
             "productName": "Majestic Velvet",
             "category": "Luxet",
-            "price": 64
+            "price": 64,
+            "imageUrl": "../images/resize/shoeSeven"
         },
         {
             "productId": 108,
             "productName": "Plush Luxuria",
             "category": "Luxet",
-            "price": 102
+            "price": 102,
+            "imageUrl": "../images/resize/shoeEight"
         },
         {
             "productId": 109,
             "productName": "Sapphire Serenade",
             "category": "Sapphire",
-            "price": 86
+            "price": 86,
+            "imageUrl": "../images/resize/shoeNine"
         },
         {
             "productId": 110,
             "productName": "Azure Jewel",
             "category": "Sapphire",
-            "price": 85
+            "price": 85,
+            "imageUrl": "../images/resize/shoeTen"
         },
         {
             "productId": 111,
             "productName": "Crystal Elegance",
             "category": "Sapphire",
-            "price": 95
+            "price": 95,
+            "imageUrl": "../images/resize/shoeEleven"
         },
         {
             "productId": 112,
             "productName": "Gemstone Charm",
             "category": "Sapphire",
-            "price": 76
+            "price": 76,
+            "imageUrl": "../images/resize/shoeTwelve"
         },
         {
             "productId": 113,
             "productName": "Dazzling Radiance",
             "category": "Dazzle",
-            "price": 97
+            "price": 97,
+            "imageUrl": "../images/resize/shoeThirteen"
         },
         {
             "productId": 114,
             "productName": "Sparkling Allure",
             "category": "Dazzle",
-            "price": 86
+            "price": 86,
+            "imageUrl": "../images/resize/shoeFouteen"
         },
         {
             "productId": 115,
             "productName": "Gemfire Splendor",
             "category": "Dazzle",
-            "price": 97
+            "price": 97,
+            "imageUrl": "../images/resize/shoeFifteen"
         },
         {
             "productId": 116,
             "productName": "Twinkling Mystique",
             "category": "Dazzle",
-            "price": 78
+            "price": 78,
+            "imageUrl": "../images/resize/shoeSixteen"
         }
     ]
 }
