@@ -18,7 +18,7 @@ gettingProductsData = () =>{
                 <div class="col-md-3 col-sm-3 col-xs-12 d-flex justify-content-center mb-4">
                     <div class="card" style="width: 18rem;">
                         <div class="product-img-box d-flex justify-content-center">
-                            <img src="${element.imageUrl}.png" class="card-img-top" alt="...">
+                            <img src="${element.imageUrl}" class="card-img-top" alt="...">
                         </div>
                             <div class="card-body" id="${element.productId}">
                                 <p class="card-text cost">${element.price} $</p>
@@ -43,7 +43,7 @@ gettingProductsData = () =>{
 showModal = (productName,imageUrl)=>{
     console.log(123);
     document.getElementById('exampleModalLabel').innerHTML = productName
-    document.getElementById('modal-body').innerHTML = `<img src="${imageUrl}.png" class="card-img-top" alt="...">`
+    document.getElementById('modal-body').innerHTML = `<img src="${imageUrl}" class="card-img-top" alt="...">`
 }
 
 gettingProductsData()
