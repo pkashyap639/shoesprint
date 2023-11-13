@@ -98,3 +98,106 @@ getCartItems = async () =>{
 getCartItems()
 let myCartItems = localStorage.getItem('mycart')
 console.log(JSON.parse(myCartItems));
+
+function cartItemsList(){
+    var myCartItemsJson = JSON.parse(myCartItems)
+    for (let i = 0; i < myCartItemsJson.length; i++) {
+        var product_over = document.getElementById('product-overview');
+        var z = document.createElement('div');
+
+        if(window.screen.width < 425){
+
+        
+        z.innerHTML = `
+        <div class="products row">
+        <div class="product-image col container h-100 my-auto
+            text-center ">
+            <img src="${myCartItemsJson[i]['productImage']}" class="product-img"
+                alt="">
+        </div>
+
+        <div class="col product-desc-p">
+        <div class="text-center">
+            <p class="product-name">${myCartItemsJson[i]['productName']}</p>
+            <p class="product-price">$${myCartItemsJson[i]['price'].toFixed(2)}</p>
+            <div id="product-qnt">
+                <div class="row px-2">
+                    <a href="" class="col
+                        text-decoration-none
+                        fw-bold text-black">-</a>
+                    <div class="col">1</div>
+                    <a href="" class="col
+                        text-decoration-none
+                        fw-bold text-black">+</a>
+                </div>
+            </div>
+            <a href="" class="text-black">Remove</a>
+        </div>
+        </div>
+        </div>
+        
+
+        <hr>
+        `
+    }else{
+        z.innerHTML = `
+        <div class="products row">
+        <div class="product-image col container h-100 my-auto
+            text-center ">
+            <img src="images/ShoeOne.jpg" class="product-img"
+                alt="">
+        </div>
+
+        <div class="col text-center product-desc">
+            Nike Jordan Air Max 1234
+        </div>
+        <div class=" col text-center product-desc">
+            <p class="product-price">$225.99</p>
+            <div id="product-qnt">
+                <div class="row px-2">
+                    <a href="" class="col text-decoration-none
+                        fw-bold text-black">-</a>
+                    <div class="col p-0">1</div>
+                    <a href="" class="col text-decoration-none
+                        fw-bold text-black">+</a>
+                </div>
+            </div>
+            <a href="" class="text-black">Remove</a>
+        </div>
+        
+        <hr>
+        `}
+        console.log('aaa')
+        product_over.appendChild(z)
+    }
+}
+cartItemsList()
+
+function cartTotal(){
+    let subtotal = 0;
+    let discount = 0;
+    let tax = 0;
+    let total = 0;
+    let myCartItemsJson = JSON.parse(myCartItems);
+
+    var subtotalHtml = document.getElementById('subtotal')
+    var taxHtml = document.getElementById('tax')
+    var taxHstHtml = document.getElementById('tax-hst')
+    var totalHtml = document.getElementById('total')
+
+    for (let i = 0; i < myCartItemsJson.length; i++) {
+        subtotal += myCartItemsJson[i]['price']
+    }
+    
+    tax = subtotal * 0.13
+    total = subtotal + tax
+
+    console.log(tax)
+    subtotalHtml.innerHTML = `$${subtotal.toFixed(2)}`
+    taxHtml.innerHTML = `$${tax.toFixed(2)}`
+    taxHstHtml.innerHTML = `$${tax.toFixed(2)}`
+    total.innerHTML = `$${total.toFixed(2)}`
+
+}
+
+cartTotal()
