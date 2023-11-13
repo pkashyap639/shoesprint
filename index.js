@@ -17,6 +17,8 @@ checkAuthenticationToCart = () =>{
 
 signOut = ()=>{
     localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    localStorage.removeItem('mycart')
     window.location.href = "./index.html"
 }
 
