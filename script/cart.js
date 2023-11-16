@@ -154,15 +154,15 @@ function cartItemsList(){
             <div class="products row">
             <div class="product-image col container h-100 my-auto
                 text-center ">
-                <img src="images/ShoeOne.jpg" class="product-img"
+                <img src="${myCartItemsJson[i]['imageUrl']}" class="product-img"
                     alt="">
             </div>
 
             <div class="col text-center product-desc">
-                Nike Jordan Air Max 1234
+            ${myCartItemsJson[i]['productName']}
             </div>
             <div class=" col text-center product-desc">
-                <p class="product-price">$225.99</p>
+                <p class="product-price">$${myCartItemsJson[i]['price'].toFixed(2)}</p>
                 <div id="product-qnt">
                     <div class="row px-2">
                         <a href="" class="col text-decoration-none
