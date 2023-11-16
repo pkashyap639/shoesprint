@@ -21,29 +21,29 @@
 
     <!-- Script -->
     <script src="./index.js" defer></script>
+    <script src="./contactus.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">SHOESPRINT</a>
+          <a class="navbar-brand" href="../index.html">SHOESPRINT</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link"  href="all-products/allproduct.html">ALL PRODUCTS</a>
+                <a class="nav-link"  href="../all-products/allproduct.html">ALL PRODUCTS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"  href="#">CATEGORIES</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"  onclick="checkAuthentication()">CART</a>
+                <a class="nav-link" href="javascript:void(0);"  onclick="checkAuthenticationToCart()">CART</a>
               </li>
             </ul>
-            <li class="nav-item d-flex">
-                <a class="nav-link"  href="./signin/signin.html">SIGN IN</a>
+            <li class="nav-item d-flex" id="authBtn">
             </li>
           </div>
         </div>
@@ -109,10 +109,10 @@
                 <p class="footer-text"><a class="footer-link" href="">&copy; 2023 ShoeSprint. All rights reserved.</a></p>
             </div>
             <div class="col-md-2 d-flex justify-content-center align-items-center">
-                <p class="footer-text"><a class="footer-link" href="">ABOUT US</a></p>
+                <p class="footer-text"><a class="footer-link" href="../aboutus/aboutus.html">ABOUT US</a></p>
             </div>
             <div class="col-md-2 d-flex justify-content-center align-items-center">
-                <p class="footer-text"><a class="footer-link" href="">CONTACT US</a></p>
+                <p class="footer-text"><a class="footer-link" href="./contactus.html">CONTACT US</a></p>
             </div>
             <div class="col-md-4 d-flex justify-content-center align-items-center">
                 <form>
