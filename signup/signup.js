@@ -68,6 +68,7 @@ getUserData = (event) =>{
     const password = form.elements.password.value
     const phone = form.elements.phone.value
     if (checkFormValidation(name,email,password,phone)){
+        indexedDB.deleteDatabase("CustomerDB");
         const myDb = indexedDB.open("CustomerDB");
 
         // on error
