@@ -32,51 +32,28 @@ checkFormValidation = (username,useremail,userpassword,userphone) =>{
 }
 
 
-databaseEntry = (username,useremail,userpassword,userphone) =>{
-    // creating database
-    const myDb = indexedDB.open("CustomerDB");
+// databaseEntry = (username,useremail,userpassword,userphone) =>{
+//     // creating database
+//     const myDb = indexedDB.open("CustomerDB");
 
-    // on error
-    myDb.onerror = (error) =>{
-        console.error(error)
-    }
+    
 
-    myDb.onupgradeneeded = () =>{
-        // getting cursor
-        const cur = myDb.result
-        const obj = cur.createObjectStore("customer",{keyPath: 'email'})
-        // columns
-        obj.createIndex("customer_info",["user"],{unique: true});
-    }
+    
 
-    myDb.onsuccess = ()=>{
-        const cur = myDb.result
-        const trans = cur.transaction("customer","readwrite")
-        const ins = trans.objectStore("customer")
-        const userIndex = ins.index("customer_info")
-        ins.put({
-            email: useremail,
-            password: userpassword,
-            name: username,
-            phone: userphone,
-            cart: {
-                cardId: 'cart'+useremail,
-                cartItems: 
-                    []
-            },
-            totalPrice: 0
-        })
+//     myDb.onsuccess = ()=>{
+//         const cur = myDb.result
+//         const trans = cur.transaction("customer","readwrite")
+//         const ins = trans.objectStore("customer")
+//         const userIndex = ins.index("customer_info")
+        
 
-        // const query = ins.get('user1@mail.com')
-        // query.onsuccess =() =>{
-        //     console.log("data: ",query.result);
-        // }
-        trans.oncomplete =() =>{
-            cur.close();
-        }
-
-    }
-}
+//         // const query = ins.get('user1@mail.com')
+//         // query.onsuccess =() =>{
+//         //     console.log("data: ",query.result);
+//         // }
+        
+//     }
+// }
 
 
 // {pId: 1,pname:'product 1', category: 'A', qty: 1, price: 5},
@@ -92,10 +69,24 @@ getUserData = (event) =>{
     const phone = form.elements.phone.value
     if (checkFormValidation(name,email,password,phone)){
         const myDb = indexedDB.open("CustomerDB");
+
+        // on error
+        myDb.onerror = (error) =>{
+            console.error(error)
+        }
+
+        myDb.onupgradeneeded = () =>{
+            // getting cursor
+            const cur = myDb.result
+            const obj = cur.createObjectStore("customer",{keyPath: 'email'})
+            // columns
+            obj.createIndex("customer_info",["user"],{unique: true});
+        }
         myDb.onsuccess = () =>{
             const cur = myDb.result
             const trans = cur.transaction("customer","readwrite")
             const ins = trans.objectStore("customer")
+            
             const query = ins.get(email)
             
             query.onsuccess =() =>{
@@ -103,7 +94,19 @@ getUserData = (event) =>{
                 if (query.result == undefined){
                     console.log("Valid Form");
                     document.getElementById('redirect-msg').innerHTML = "Account Created, redirecting to Sign In"
-                    databaseEntry(name,email,password,phone)
+                    //databaseEntry(name,email,password,phone)
+                    ins.put({
+                        email: email,
+                        password: password,
+                        name: name,
+                        phone: phone,
+                        cart: {
+                            cardId: 'cart'+email,
+                            cartItems: 
+                                []
+                        },
+                        totalPrice: 0
+                    })
                     setTimeout(() => {
                         window.location.href = '../signin/signin.html';
                     }, 3000);
@@ -111,6 +114,11 @@ getUserData = (event) =>{
                 else{
                     document.getElementById('redirect-msg').innerHTML = "Account is already exists"
                 }
+
+                trans.oncomplete =() =>{
+                    cur.close();
+                }
+        
             }
         }
         
