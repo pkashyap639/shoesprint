@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="allproducts.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <!-- Google Font 2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+     <!-- Styles -->
+     <link rel="stylesheet" href="../main.css">
+     <link rel="stylesheet" href="../navbar.css">
+     <link rel="stylesheet" href="./allproducts.css">
+     <!-- script -->
+     <script src="./allproducts.js" defer></script>
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-light">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="index.html">SHOESPRINT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+                    <li class="nav-item">
+                        <a class="nav-link" href="all-products/allproduct.html">ALL PRODUCTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CATEGORIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" onclick="checkAuthenticationToCart()">CART</a>
+                    </li>
+                </ul>
+                <li class="nav-item d-flex" id="authBtn"></li>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!--  -->
+    <div class="container">
+        <div class="title"></div>
+        <div class="detail">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="content">
+                <h1 class="name"></h1>
+                <div class="price"></div>
+                <div class="buttons">
+                    <button>Check out</button>
+                    <button>
+                        Add to cart
+                    </button>
+                </div>
+                <div class="description"></div>
+            </div>
+        </div>
+        <div class="title">More silimmler Product </div>
+        <div class="listProduct"></div>
+    </div>
+    <script>
+
+
+        var allProducts = null;
+        //getting data from jason
+        //const detail = document.querySelector('.deatil')
+        const productsJson = '../products/products.json'
+        fetch(productsJson)
+        .then((response) => {
+             if (!response.ok) {
+             throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+        })
+        .then((data) => {
+        allProducts = data.products
+        let arr = data.products;
+        showDetail();
+        })
+        
+        function showDetail(){
+
+            let detail = document.querySelector('.detail'); 
+            let productId = new URLSearchParams(window.location.search).get('id');
+            let thisProduct = allProducts.find(value => {
+                return value.productId == productId;
+            });
+
+            if (!thisProduct){
+
+                window.location.href = "/";
+            }
+            detail.querySelector('.image img').src = thisProduct.imageUrl;
+            detail.querySelector('.name').innerText = thisProduct.productName;
+            detail.querySelector('.price').innerText = '$' + thisProduct.price;
+            detail.querySelector('.description').innerText = `Category: ${thisProduct.category}`;
+            
+
+            let listProduct = document.querySelector('.listProduct');
+
+            allProducts.filter(value => value.productId !== productId).forEach(product => {
+                let newProduct = document.createElement('a');
+                newProduct.href = 'detail.html?id='+ product.productId;
+                newProduct.classList.add('item');
+                newProduct.innerHTML = `
+                <img src="${product.imageUrl}">
+                <h2>${product.productName}</h2>
+                <div class="price">$ ${product.price}</div>
+
+                `;
+            
+                listProduct.appendChild(newProduct);
+            });
+        }
+    </script>
+</body>
+<!-- Footer -->
+<div class="container-fluid">
+    <div class="row mt-2 mb-2">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <p class="footer-text"><a class="footer-link" href="">&copy; 2023 ShoeSprint. All rights reserved.</a></p>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+            <p class="footer-text"><a class="footer-link" href="../aboutus/aboutus.html">ABOUT US</a></p>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+            <p class="footer-text"><a class="footer-link" href="../contactus/contactus.html">CONTACT US</a></p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <form>
+                <label for="email" class="footer-form-text">JOIN OUR COMMUNITY</label><br>
+                <input class="community-input" type="email" placeholder="ENTER YOUR EMAIL">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
