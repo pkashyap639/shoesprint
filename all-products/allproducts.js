@@ -26,7 +26,7 @@ gettingProductsData = () =>{
                                 <p class="card-text product-category">${element.category}</p>
                                 <div class="btn-group d-flex justify-content-center mt-4" role="group" >
                                 <button type="button" class="btn add-btn" onClick="addProduct(${element.productId})" id="${element.productId}">Add</button>
-                                <button type="button" class="btn view-btn" onClick='showModal("${element.productName}","${element.imageUrl}")' data-bs-toggle="modal" data-bs-target="#exampleModal"   id="${element.productId}">View</button>
+                                <button type="button" class="btn add-btn" onclick="viewProduct(${element.productId})">View</button>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,9 @@ gettingProductsData = () =>{
         console.error('There was a problem ', error);
     });
 }
-
-showModal = (productName,imageUrl)=>{
-    console.log(123);
-    document.getElementById('exampleModalLabel').innerHTML = productName
-    document.getElementById('modal-body').innerHTML = `<img src="${imageUrl}" class="card-img-top" alt="...">`
+viewProduct = (productId) => {
+    // Example redirection to a new page based on the productId
+    window.location.href = `./detail.html?id=${productId}`;
 }
 
 gettingProductsData()
