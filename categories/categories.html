@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShoeSprint</title>
     <!-- Google Fonts -->
@@ -16,97 +16,137 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Styles -->
     <link rel="stylesheet" href="../main.css">
-    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="categories.css">
     <!-- Script -->
     <script src="./index.js" defer></script>
+    <title>Product Categories</title>
+    
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">SHOESPRINT</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link"  href="all-products/allproduct.html">ALL PRODUCTS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  href="#">CATEGORIES</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"  onclick="checkAuthenticationToCart()">CART</a>
-              </li>
-            </ul>
-            <li class="nav-item d-flex" id="authBtn">
-            </li>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../index.html">SHOESPRINT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"  href="../all-products/allproduct.html">ALL PRODUCTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="../categories/categories.html">CATEGORIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"  onclick="checkAuthenticationToCart()">CART</a>
+        </li>
+      </ul>
+      <li class="nav-item d-flex" id="authBtn">
+      </li>
+    </div>
+  </div>
+</nav>
+
+ <!-- Shoe Display-->
+ <div class="container-fluid">
+  <div class="row ">
+      <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 22rem;">
+              <img src="../images/ShoeOne.jpg" class="card-img-top" alt="shoe">
+              <div class="card-body text-center">
+                <button onclick="filterProducts('Opulent')" class="btn btn-dark">OPULENT SERIES</button>
+              </div>
           </div>
-        </div>
-    </nav>
+      </div>
+      <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 22rem;">
+              <img src="../images/ShoeTwo.jpg" class="card-img-top" alt="shoe">
+              <div class="card-body text-center">
+                <button onclick="filterProducts('Luxet')" class="btn btn-dark">LUXET SERIES</button>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 22rem;">
+              <img src="../images/ShoeThree.jpg" class="card-img-top" alt="shoe">
+              <div class="card-body text-center">
+                <button onclick="filterProducts('Sapphire')"class="btn btn-dark">SAPPHIRE SERIES</button>
 
-  
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 d-flex justify-content-center">
+          <div class="card" style="width: 22rem;">
+              <img src="../images/ShoeFour.jpg" class="card-img-top" alt="shoe">
+              <div class="card-body text-center">
+                <button onclick="filterProducts('Dazzle')"class="btn btn-dark">DAZZLE SERIES</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<hr>
 
-      <!-- Shoe Display-->
-    <div class="container-fluid">
-        <div class="row ">
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="card" style="width: 22rem;">
-                    <img src="../images/ShoeOne.jpg" class="card-img-top" alt="shoe">
-                    <div class="card-body">
-                      <p class="card-text">OPULENT SERIES</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="card" style="width: 22rem;">
-                    <img src="../images/ShoeTwo.jpg" class="card-img-top" alt="shoe">
-                    <div class="card-body">
-                      <p class="card-text">LUXET SERIES</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="card" style="width: 22rem;">
-                    <img src="../images/ShoeThree.jpg" class="card-img-top" alt="shoe">
-                    <div class="card-body">
-                      <p class="card-text">SAPPHIRE SERIES</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center">
-                <div class="card" style="width: 22rem;">
-                    <img src="../images/ShoeFour.jpg" class="card-img-top" alt="shoe">
-                    <div class="card-body">
-                      <p class="card-text">DAZZLE SERIES</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-    <!-- Footer -->
-    <div class="container-fluid">
-        <div class="row mt-2 mb-2">
-            <div class="col-md-4 d-flex justify-content-center align-items-center">
-                <p class="footer-text"><a class="footer-link" href="">&copy; 2023 ShoeSprint. All rights reserved.</a></p>
-            </div>
-            <div class="col-md-2 d-flex justify-content-center align-items-center">
-                <p class="footer-text"><a class="footer-link" href="./aboutus/aboutus.html">ABOUT US</a></p>
-            </div>
-            <div class="col-md-2 d-flex justify-content-center align-items-center">
-                <p class="footer-text"><a class="footer-link" href="./contactus/contactus.html">CONTACT US</a></p>
-            </div>
-            <div class="col-md-4 d-flex justify-content-center align-items-center">
-                <form>
-                    <label for="email" class="footer-form-text">JOIN OUR COMMUNITY</label><br>
-                    <input class="community-input" type="email" placeholder="ENTER YOUR EMAIL">
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<div id="productList" class="container1">
+    <!-- Product items will be displayed here -->
+</div>
+
+<script>
+    function filterProducts(category) {
+        fetch('../products/products.json')
+            .then(response => response.json())
+            .then(data => {
+                const productList = document.getElementById('productList');
+                const products = data.products; // Extracting products from the data
+
+                let filteredProducts = products.filter(product => product.category === category);
+
+                productList.innerHTML = '';
+
+                filteredProducts.forEach(product => {
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('product');
+                    productItem.innerHTML = `
+                        <h3>${product.productName}</h3>
+                        <img src="${product.imageUrl}" alt="${product.productName}">
+                        <p>Category: ${product.category}</p>
+                        <p>Price: $${product.price}</p>
+                    `;
+                    productList.appendChild(productItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing data:', error);
+            });
+    }
+</script>
+
+<!-- Footer -->
+<div class="container-fluid">
+  <div class="row mt-2 mb-2">
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <p class="footer-text"><a class="footer-link" href="">&copy; 2023 ShoeSprint. All rights reserved.</a></p>
+      </div>
+      <div class="col-md-2 d-flex justify-content-center align-items-center">
+          <p class="footer-text"><a class="footer-link" href="./aboutus/aboutus.html">ABOUT US</a></p>
+      </div>
+      <div class="col-md-2 d-flex justify-content-center align-items-center">
+          <p class="footer-text"><a class="footer-link" href="./contactus/contactus.html">CONTACT US</a></p>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <form>
+              <label for="email" class="footer-form-text">JOIN OUR COMMUNITY</label><br>
+              <input class="community-input" type="email" placeholder="ENTER YOUR EMAIL">
+          </form>
+      </div>
+  </div>
+</div>
+
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>
