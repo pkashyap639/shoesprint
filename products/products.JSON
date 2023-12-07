@@ -5,7 +5,7 @@
             "productName": "Opulent Elegance",
             "category": "Opulent",
             "price": 81,
-            "imageUrl": "../shoesImages/1.png"
+            "imageUrl": "../shoesImages/1.png",
         },
         {
             "productId": 102,
