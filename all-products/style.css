@@ -51,26 +51,29 @@ a{
 .detail{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
-    gap:50px;
     text-align: left;
 }
 
 .detail .image img{
-    width: 100%;
+    height: 500px;
+    width: 500px;
+    filter: drop-shadow(0 50px 20px #0009);
 
 }
 .detail .image{
     position: relative;
 }
 .detail .image::before{
+    margin-top: 50px;
     position:absolute;
-    width: 300px;
-    height:300px;
     content: '';
     background-color: #94817733;
     z-index:-1;
-    border-radius:190px 100px 170px 180px ;
-    left : calc(50% - 150px);
+    width: 300px;
+    height: 300px;
+    border-radius: 190px 100px 170px 180px;
+    margin-left :calc(50% -150px)
+    
 }
 
 .detail .name {
@@ -112,41 +115,60 @@ a{
     font-weight: 300;
     
 }
-
-
-@media screen and (max-width:992px){
-    .listProduct{
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .detail{
-        grid-template-columns: 40% 1fr;
-    }
-    
-
+.item {
+    text-decoration: none;
+    color: black;
 }
 
-/*mobile*/
-@media  screen and (max-width:768px) {
-    .listProduct{
+
+
+@media screen and (max-width: 767px) {
+    .container {
+        padding-top: 20px;
+    }
+    .listProduct {
         grid-template-columns: repeat(2, 1fr);
+        gap: 3px;
+        
     }
-    .detail{
+    .detail {
         grid-template-columns: 1fr;
-        text-align: center;
     }
-    .detail .img img{
-        width: unset;
-        height:40vh;
+    .detail .image img {
+        width: 100%;
+        height: auto;
     }
-    .detail .name{
+    
+    .detail .name {
         font-size: x-large;
-        margin :0;
+        padding-top: 20px;
     }
-    .detail .buttons buttton{
-        font-size: small;
+    .detail .image::before{
+        margin-top: 25px;
+        position:absolute;
+        content: '';
+        background-color: #94817733;
+        z-index:-1;
+        width: 250px;
+        height: 250px;
+        border-radius: 190px 100px 170px 180px;
+        margin-left :calc(50% -150px)
+        
     }
-    .detail .buttons{
-        justify-content: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        width: 80%; /* Adjust the width to your preference */
+        max-width: none;
+    }
+    .detail .image img {
+        width: 100%;
+        height: auto;
+    }
+    .detail .name {
+        font-size: xx-large;
+        padding-top: 20px;
     }
 }
 
@@ -155,7 +177,8 @@ a{
 
 
 
-.item {
-    text-decoration: none;
-    color: black;
+
+p{
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
