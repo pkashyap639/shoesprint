@@ -22,21 +22,21 @@
      <link rel="stylesheet" href="../navbar.css">
      <link rel="stylesheet" href="./allproducts.css">
      <!-- script -->
-    <script src="./allproducts.js" defer></script> 
+     <script src="./allproducts.js" defer></script>
     
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-light">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="/index.html">SHOESPRINT</a>
+            <a class="navbar-brand" href="index.html">SHOESPRINT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.html">ALL PRODUCTS</a>
+                        <a class="nav-link" href="all-products/allproduct.html">ALL PRODUCTS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">CATEGORIES</a>
@@ -62,20 +62,17 @@
                 <h1 class="name"></h1>
                 <div class="price"></div>
                 <div class="buttons">
-                    <button> Add to cart</button>
+                    <button>Check out</button>
                     <button>
-                        favourite <span class="heart-icon">   &#10084;</span>
+                        Add to cart
                     </button>
                 </div>
-                <p>View Product Details</p>
                 <div class="description"></div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aperiam fugiat ducimus vero reiciendis enim incidunt distinctio? Cum voluptas alias labore obcaecati natus, quasi adipisci minus. Repudiandae distinctio laborum dolor?
-                <div class="desc"></div>
             </div>
         </div>
-       <div class="title">More Similar Product </div>
-        <!-- <div class="listProduct"></div>
-    </div>-->
+        <div class="title">More silimmler Product </div>
+        <div class="listProduct"></div>
+    </div>
     <script>
 
 
@@ -111,67 +108,26 @@
             detail.querySelector('.image img').src = thisProduct.imageUrl;
             detail.querySelector('.name').innerText = thisProduct.productName;
             detail.querySelector('.price').innerText = '$' + thisProduct.price;
-            detail.querySelector('.description').innerText = thisProduct.desc;
-
+            detail.querySelector('.description').innerText = `Category: ${thisProduct.category}`;
             
 
             let listProduct = document.querySelector('.listProduct');
 
+            allProducts.filter(value => value.productId !== productId).forEach(product => {
+                let newProduct = document.createElement('a');
+                newProduct.href = 'detail.html?id='+ product.productId;
+                newProduct.classList.add('item');
+                newProduct.innerHTML = `
+                <img src="${product.imageUrl}">
+                <h2>${product.productName}</h2>
+                <div class="price">$ ${product.price}</div>
+
+                `;
             
+                listProduct.appendChild(newProduct);
+            });
         }
-
-        var allPorducts = null
-
-gettingProductsData = () =>{
-    const rowItems = document.getElementById('products-row')
-    const productsJson = '../products/products.JSON'
-    fetch(productsJson)
-    .then((response) => {
-        if (!response.ok) {
-        throw new Error('Network response was not ok');
-        }
-        return response.json(); 
-    })
-    .then((data) => {
-        allPorducts = data.products
-        let arr = data.products
-        arr.forEach(element => {
-            rowItems.innerHTML += `
-
-                <div class="col-md-3 col-sm-3 col-xs-12 d-flex justify-content-center mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="product-img-box d-flex justify-content-center">
-                            <img src="${element.imageUrl}" class="card-img-top" alt="...">
-                        </div>
-                            <div class="card-body" id="${element.productId}">
-                                <p class="card-text cost">${element.price} $</p>
-                                <p class="card-text product-name">${element.productName}</p>
-                                <p class="card-text product-category">${element.category}</p>
-                                <div class="btn-group d-flex justify-content-center mt-4" role="group" >
-                                <button type="button" class="btn add-btn" onClick="addProduct(${element.productId})" id="${element.productId}">Add</button>
-                                <button type="button" class="btn add-btn" onclick="viewProduct(${element.productId})">View</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `
-
-        });
-    })
-    .catch((error) => {
-        console.error('There was a problem ', error);
-    });
-}
-
     </script>
-
-
-<!-- Products Grid -->
-<div class="container-fluid">
-    <div class="row" id="products-row">
-        
-    </div>
-</div>
 </body>
 <!-- Footer -->
 <div class="container-fluid">

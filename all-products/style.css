@@ -51,29 +51,26 @@ a{
 .detail{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
+    gap:50px;
     text-align: left;
 }
 
 .detail .image img{
-    height: 500px;
-    width: 500px;
-    filter: drop-shadow(0 50px 20px #0009);
+    width: 100%;
 
 }
 .detail .image{
     position: relative;
 }
 .detail .image::before{
-    margin-top: 50px;
     position:absolute;
+    width: 300px;
+    height:300px;
     content: '';
     background-color: #94817733;
     z-index:-1;
-    width: 300px;
-    height: 300px;
-    border-radius: 190px 100px 170px 180px;
-    margin-left :calc(50% -150px)
-    
+    border-radius:190px 100px 170px 180px ;
+    left : calc(50% - 150px);
 }
 
 .detail .name {
@@ -115,60 +112,41 @@ a{
     font-weight: 300;
     
 }
-.item {
-    text-decoration: none;
-    color: black;
-}
 
 
-
-@media screen and (max-width: 767px) {
-    .container {
-        padding-top: 20px;
+@media screen and (max-width:992px){
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
     }
-    .listProduct {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3px;
-        
-    }
-    .detail {
-        grid-template-columns: 1fr;
-    }
-    .detail .image img {
-        width: 100%;
-        height: auto;
+    .detail{
+        grid-template-columns: 40% 1fr;
     }
     
-    .detail .name {
-        font-size: x-large;
-        padding-top: 20px;
-    }
-    .detail .image::before{
-        margin-top: 25px;
-        position:absolute;
-        content: '';
-        background-color: #94817733;
-        z-index:-1;
-        width: 250px;
-        height: 250px;
-        border-radius: 190px 100px 170px 180px;
-        margin-left :calc(50% -150px)
-        
-    }
+
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .container {
-        width: 80%; /* Adjust the width to your preference */
-        max-width: none;
+/*mobile*/
+@media  screen and (max-width:768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
     }
-    .detail .image img {
-        width: 100%;
-        height: auto;
+    .detail{
+        grid-template-columns: 1fr;
+        text-align: center;
     }
-    .detail .name {
-        font-size: xx-large;
-        padding-top: 20px;
+    .detail .img img{
+        width: unset;
+        height:40vh;
+    }
+    .detail .name{
+        font-size: x-large;
+        margin :0;
+    }
+    .detail .buttons buttton{
+        font-size: small;
+    }
+    .detail .buttons{
+        justify-content: center;
     }
 }
 
@@ -177,8 +155,7 @@ a{
 
 
 
-
-p{
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.item {
+    text-decoration: none;
+    color: black;
 }
