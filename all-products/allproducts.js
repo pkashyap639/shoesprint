@@ -2,7 +2,7 @@ var allPorducts = null
 
 gettingProductsData = () =>{
     const rowItems = document.getElementById('products-row')
-    const productsJson = '../products/products.JSON'
+    const productsJson = '../products/products.json'
     fetch(productsJson)
     .then((response) => {
         if (!response.ok) {
