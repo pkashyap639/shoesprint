@@ -1,62 +1,63 @@
-signOut = ()=>{
+// location.reload();
+signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     localStorage.removeItem('mycart')
     window.location.href = "./index.html"
 }
 
-if(localStorage.getItem('token')!='whisky'){
+if (localStorage.getItem('token') != 'whisky') {
     window.location.href = "./index.html"
 }
-else{
+else {
 
-window.onload = function(){
-    updateProdDesc();
-    cartItemsList();
-    cartTotal();
-}
-window.addEventListener("resize", updateProdDesc);
+    window.onload = function () {
+        updateProdDesc();
+        cartItemsList();
+        cartTotal();
+    }
+    window.addEventListener("resize", updateProdDesc);
 
 
-function updateProdDesc() {
-    var product_desc = document.getElementsByClassName("product-desc");
-    var product_desc_mobile = document.getElementsByClassName("product-desc-p");
+    function updateProdDesc() {
+        var product_desc = document.getElementsByClassName("product-desc");
+        var product_desc_mobile = document.getElementsByClassName("product-desc-p");
 
-    var product_overview = document.getElementById("product-overview");
-    var price_cal = document.getElementById("price-cal");
+        var product_overview = document.getElementById("product-overview");
+        var price_cal = document.getElementById("price-cal");
 
-    var recipt = document.getElementById("recipt");
+        var recipt = document.getElementById("recipt");
 
-    if (window.screen.width <= 425) {
+        if (window.screen.width <= 425) {
 
-        for (var i = 0; i < product_desc_mobile.length; i++) {
-            product_desc_mobile[i].style.display = "block";
+            for (var i = 0; i < product_desc_mobile.length; i++) {
+                product_desc_mobile[i].style.display = "block";
+            }
+            for (var i = 0; i < product_desc.length; i++) {
+                product_desc[i].style.display = "none";
+            }
+
+            recipt.classList.remove('row');
+            price_cal.classList.remove('col');
+            product_overview.classList.remove('col');
+        } else {
+            for (var i = 0; i < product_desc_mobile.length; i++) {
+                product_desc_mobile[i].style.display = "none";
+            }
+
+            for (var i = 0; i < product_desc.length; i++) {
+                product_desc[i].style.display = "block";
+            }
+
+
+            recipt.classList.add('row');
+            price_cal.classList.add('col');
+            product_overview.classList.add('col');
         }
-        for (var i = 0; i < product_desc.length; i++) {
-            product_desc[i].style.display = "none";
-        }
-
-        recipt.classList.remove('row');
-        price_cal.classList.remove('col');
-        product_overview.classList.remove('col');
-    } else {
-        for (var i = 0; i < product_desc_mobile.length; i++) {
-            product_desc_mobile[i].style.display = "none";
-        }
-        
-        for (var i = 0; i < product_desc.length; i++) {
-            product_desc[i].style.display = "block";
-        }
-        
-        
-        recipt.classList.add('row');
-        price_cal.classList.add('col');
-        product_overview.classList.add('col');
     }
 }
-}
 
-getCartItems = async () =>{
+getCartItems = async () => {
 
     let flag = 1;
 
@@ -84,8 +85,8 @@ getCartItems = async () =>{
         const cartQuery = store.get(localStorage.getItem('email'));
 
         cartQuery.onsuccess = () => {
-            let cartItems =  cartQuery.result.cart.cartItems
-            localStorage.setItem('mycart',JSON.stringify(cartItems))
+            let cartItems = cartQuery.result.cart.cartItems
+            localStorage.setItem('mycart', JSON.stringify(cartItems))
         };
 
         transaction.oncomplete = () => {
@@ -93,34 +94,34 @@ getCartItems = async () =>{
             if (flag == -1) {
                 return false;
             }
-            
+
         };
     } catch (error) {
         console.error(error);
     }
-    
+
 }
 
 getCartItems()
 let myCartItems = localStorage.getItem('mycart')
 console.log(JSON.parse(myCartItems));
 
-function cartItemsList(){
+function cartItemsList() {
     let myCItems = localStorage.getItem('mycart')
     var myCartItemsJson = JSON.parse(myCItems)
-    if(myCartItemsJson.length==0){
+    if (myCartItemsJson.length == 0 || myCartItemsJson == null) {
         var product_over = document.getElementById('product-overview');
         product_over.innerHTML = 'Your cart is empty.';
     }
-    else{
+    else {
         for (let i = 0; i < myCartItemsJson.length; i++) {
             var product_over = document.getElementById('product-overview');
             var z = document.createElement('div');
 
-            if(window.screen.width < 425){
+            if (window.screen.width < 425) {
 
-            
-            z.innerHTML = `
+
+                z.innerHTML = `
             <div class="products row">
             <div class="product-image col container h-100 my-auto
                 text-center ">
@@ -151,8 +152,8 @@ function cartItemsList(){
 
             <hr>
             `
-        }else{
-            z.innerHTML = `
+            } else {
+                z.innerHTML = `
             <div class="products row">
             <div class="product-image col container h-100 my-auto
                 text-center ">
@@ -167,11 +168,9 @@ function cartItemsList(){
                 <p class="product-price">$${myCartItemsJson[i]['price'].toFixed(2)}</p>
                 <div id="product-qnt">
                     <div class="row px-2">
-                        <a href="" class="col text-decoration-none
-                            fw-bold text-black">-</a>
+                        <div class="col" onclick="removeProduct(${myCartItemsJson[i]['productId']});">-</div>
                         <div class="col p-0">1</div>
-                        <a href="" class="col text-decoration-none
-                            fw-bold text-black">+</a>
+                        <div class="col" onclick="addProduct(${myCartItemsJson[i]['productId']});">+</div>
                     </div>
                 </div>
                 <a href="" class="text-black">Remove</a>
@@ -179,13 +178,12 @@ function cartItemsList(){
             
             <hr>
             `}
-            console.log('aaa')
             product_over.appendChild(z)
         }
     }
 }
 
-function cartTotal(){
+function cartTotal() {
     let subtotal = 0;
     let discount = 0;
     let tax = 0;
@@ -201,11 +199,10 @@ function cartTotal(){
     for (let i = 0; i < myCartItemsJson.length; i++) {
         subtotal += myCartItemsJson[i]['price']
     }
-    
+
     tax = subtotal * 0.13
     total = subtotal + tax
 
-    console.log(tax)
     subtotalHtml.innerHTML = `$${subtotal.toFixed(2)}`
     taxHtml.innerHTML = `$${tax.toFixed(2)}`
     taxHstHtml.innerHTML = `$${tax.toFixed(2)}`
@@ -213,37 +210,195 @@ function cartTotal(){
 }
 
 // Authorization
-checkAuthentication = () =>{
-    if(localStorage.getItem('token')=='whisky'){
+checkAuthentication = () => {
+    if (localStorage.getItem('token') == 'whisky') {
         return true
     }
     return false
 }
 
-checkAuthenticationToCart = () =>{
-    if(localStorage.getItem('token')=='whisky'){
+checkAuthenticationToCart = () => {
+    if (localStorage.getItem('token') == 'whisky') {
         window.location.href = "../cart.html"
     }
-    else{
+    else {
         alert('Please Sign In First')
     }
 }
 
 
-signOut = ()=>{
+signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     localStorage.removeItem('mycart')
     window.location.href = "../index.html"
 }
 
-authorizationBtn = () =>{
+authorizationBtn = () => {
     const authBtn = document.getElementById('authBtn')
-    if(checkAuthentication() != true){
+    if (checkAuthentication() != true) {
         authBtn.innerHTML = '<a class="nav-link"  href="../signin/signin.html">SIGN IN</a>'
-    }else{
+    } else {
         authBtn.innerHTML = '<a class="nav-link" href="javascript:void(0);" onclick="signOut()">SIGN OUT</a>'
     }
 }
 
 authorizationBtn()
+
+
+removeProduct = async (productId) => {
+    var allPorducts;
+    const productsJson = '../products/products.JSON'
+    fetch(productsJson)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(async (data) => {
+            allPorducts = data.products
+
+
+            let prodResult;
+            if (checkAuthentication() == true) {
+                allPorducts.forEach(elm => {
+                    if (elm.productId == productId) {
+                        prodResult = elm
+                    }
+                })
+
+                let flag = 1;
+
+                const openDatabase = () => {
+                    return new Promise((resolve, reject) => {
+                        const myDb = indexedDB.open("CustomerDB");
+
+                        myDb.onerror = (error) => {
+                            reject("Error opening database");
+                        };
+
+                        myDb.onsuccess = (event) => {
+                            const db = event.target.result;
+                            resolve(db);
+                        };
+                    });
+                };
+
+                try {
+                    const db = await openDatabase();
+                    const transaction = db.transaction("customer", "readwrite");
+                    const store = transaction.objectStore("customer");
+                    const userIndex = store.index("customer_info");
+
+                    const cartQuery = store.get(localStorage.getItem('email'));
+
+                    cartQuery.onsuccess = () => {
+                        for (let i = 0; i < cartQuery.result.cart.cartItems.length; i++) {
+                            const element = cartQuery.result.cart.cartItems[i];
+                            console.log(`product id: ${productId} | ${element['productId']}`);
+                            if (element['productId'] == productId) {
+                                cartQuery.result.cart.cartItems.splice(i, 1)
+                            }
+                        }
+                        store.put(cartQuery.result)
+                        console.log("Cart Updated");
+                    };
+
+                    transaction.oncomplete = () => {
+                        db.close();
+                        if (flag == -1) {
+                            return false;
+                        }
+
+                    };
+                } catch (error) {
+                    console.error(error);
+                }
+                location.reload();
+                location.reload();
+            }
+            else {
+                alert("Please Sign In First")
+            }
+        });
+}
+
+addProduct = async (productId) => {
+    var allPorducts;
+    const productsJson = '../products/products.JSON'
+    fetch(productsJson)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(async (data) => {
+            allPorducts = data.products
+
+
+            let prodResult;
+            if (checkAuthentication() == true) {
+                allPorducts.forEach(elm => {
+                    if (elm.productId == productId) {
+                        prodResult = elm
+                    }
+                })
+
+                let flag = 1;
+
+                const openDatabase = () => {
+                    return new Promise((resolve, reject) => {
+                        const myDb = indexedDB.open("CustomerDB");
+
+                        myDb.onerror = (error) => {
+                            reject("Error opening database");
+                        };
+
+                        myDb.onsuccess = (event) => {
+                            const db = event.target.result;
+                            resolve(db);
+                        };
+                    });
+                };
+
+                try {
+                    const db = await openDatabase();
+                    const transaction = db.transaction("customer", "readwrite");
+                    const store = transaction.objectStore("customer");
+                    const userIndex = store.index("customer_info");
+
+                    const cartQuery = store.get(localStorage.getItem('email'));
+
+                    cartQuery.onsuccess = () => {
+                        for (let i = 0; i < cartQuery.result.cart.cartItems.length; i++) {
+                            const element = cartQuery.result.cart.cartItems[i];
+                            console.log(`product id: ${productId} | ${element['productId']}`);
+                            if (element['productId'] == productId) {
+                            }
+                        }
+                        cartQuery.result.cart.cartItems.push(prodResult)
+                        cartQuery.result.totalPrice+=prodResult.price
+                        store.put(cartQuery.result)
+                        console.log("Cart Updated");
+                    };
+
+                    transaction.oncomplete = () => {
+                        db.close();
+                        if (flag == -1) {
+                            return false;
+                        }
+
+                    };
+                } catch (error) {
+                    console.error(error);
+                }
+                location.reload();
+                location.reload();
+            }
+            else {
+                alert("Please Sign In First")
+            }
+        });
+}
