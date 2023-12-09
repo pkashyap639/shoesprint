@@ -168,9 +168,10 @@ function cartItemsList() {
                 <p class="product-price">$${myCartItemsJson[i]['price'].toFixed(2)}</p>
                 <div id="product-qnt">
                     <div class="row px-2">
-                        <div class="col" onclick="removeProduct(${myCartItemsJson[i]['productId']});">-</div>
+                        <button class="col" style="border: none; padding: 0px; margin: 0px 10px; background-color: white;" onclick="removeProduct(${myCartItemsJson[i]['productId']});">-</button>
                         <div class="col p-0">1</div>
-                        <div class="col" onclick="addProduct(${myCartItemsJson[i]['productId']});">+</div>
+                        <button class="col" style="border: none; padding: 0px; margin: 0px 10px; background-color: white;" onclick="addProduct(${myCartItemsJson[i]['productId']});">+</button>
+                        
                     </div>
                 </div>
                 <a href="" class="text-black">Remove</a>
