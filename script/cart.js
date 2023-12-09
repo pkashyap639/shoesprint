@@ -249,7 +249,7 @@ authorizationBtn()
 
 removeProduct = async (productId) => {
     var allPorducts;
-    const productsJson = '../products/products.JSON'
+    const productsJson = '../products/products.json'
     fetch(productsJson)
         .then((response) => {
             if (!response.ok) {
@@ -327,7 +327,7 @@ removeProduct = async (productId) => {
 
 addProduct = async (productId) => {
     var allPorducts;
-    const productsJson = '../products/products.JSON'
+    const productsJson = '../products/products.json'
     fetch(productsJson)
         .then((response) => {
             if (!response.ok) {
