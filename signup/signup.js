@@ -138,7 +138,7 @@ checkToken = () =>{
 
 ifLoginned = ()=>{
     if(checkToken() == true){
-        window.location.href = "../cart.html"
+        window.location.href = "../cart/cart.html"
 
     }
 }

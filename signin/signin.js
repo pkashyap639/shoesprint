@@ -99,14 +99,14 @@ userSignIn = async (event) => {
     validateSignIn(email, password);
     await makeSignIn(email, password);
     // Move the redirection logic inside the asynchronous code
-    window.location.href = "../cart.html";
+    window.location.href = "../cart/cart.html";
     checkToken();
 };
 
 
 ifLoginned = ()=>{
     if(checkToken() == true){
-        window.location.href = "../cart.html"
+        window.location.href = "../cart/cart.html"
 
     }
 }
