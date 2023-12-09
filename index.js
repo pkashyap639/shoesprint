@@ -7,7 +7,7 @@ checkAuthentication = () =>{
 
 checkAuthenticationToCart = () =>{
     if(localStorage.getItem('token')=='whisky'){
-        window.location.href = "../cart/cart.html"
+        window.location.href = "cart/cart.html"
     }
     else{
         alert('Please Sign In First')
