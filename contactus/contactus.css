@@ -93,3 +93,8 @@ main {
 .card-subhead{
     font-weight: bold;
 }
+
+.card-tel-link{
+    text-decoration: none;
+    color: black;
+}
